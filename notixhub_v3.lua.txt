@@ -23,11 +23,11 @@ local getconns   = getconnections or get_signal_cons or getconnects or function(
 -- ============================================================
 local CONFIG_FILE = "cfg_v3.json"
 local Cfg = {
-    normalSpeed   = 58,
+    normalSpeed   = 59,
     carrySpeed    = 29,
     laggerSpeed   = 14,
     stealRadius   = 63,
-    stealDuration = 1.3,
+    stealDuration = 1.2,
     infJump       = false,
     antiRagdoll   = false,
     fpsBoost      = false,
