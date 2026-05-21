@@ -155,14 +155,15 @@ local AUTO_RETURN_SPEED = 29.2  -- speed for return phases (3 → 4 → 5)
 
 -- Left side positions
 local L_POS_1      = Vector3.new(-476.48, -6.28, 92.73)
-local L_POS_END    = Vector3.new(-483.12, -4.95, 94.80)
+local L_POS_END    = Vector3.new(-483.6, -5, 96.0)
 local L_POS_RETURN = Vector3.new(-475.7, -6.8, 92.7)  -- returns to start
 local L_POS_4      = Vector3.new(-475,    -8,    19)
 local L_POS_FINAL  = Vector3.new(-488,    -6,    19)
-
+-- X: -483.6 Y: -5.0 Z: 24.5
+-- X: -483.7 Y: -5.0 Z: 96.0
 -- Right side positions
 local R_POS_1      = Vector3.new(-476.16, -6.52, 25.62)
-local R_POS_END    = Vector3.new(-483.04, -5.09, 23.14)
+local R_POS_END    = Vector3.new(-483.6, -5.1, 24.5)
 local R_POS_RETURN = Vector3.new(-475.7, -6.8, 26.9)  -- returns to start
 local R_POS_4      = Vector3.new(-476,    -8,    99)
 local R_POS_FINAL  = Vector3.new(-488,    -6,    102)
