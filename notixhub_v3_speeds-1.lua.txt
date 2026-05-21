@@ -150,8 +150,8 @@ local h, hrp
 -- ============================================================
 -- AUTO PLAY POSITIONS (fixed L / R sides — no plot detection)
 -- ============================================================
-local AUTO_GO_SPEED    = 59.5  -- speed for go phases (1 → 2)
-local AUTO_RETURN_SPEED = 29.2  -- speed for return phases (3 → 4 → 5)
+local AUTO_GO_SPEED    = 59.2  -- speed for go phases (1 → 2)
+local AUTO_RETURN_SPEED = 29.1  -- speed for return phases (3 → 4 → 5)
 
 -- Left side positions
 local L_POS_1      = Vector3.new(-476.48, -6.28, 92.73)
