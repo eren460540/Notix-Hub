@@ -7504,7 +7504,7 @@ do
                                                                 local t3 = inner.Other:FindFirstChild("Timer")
                                                                 if t3 then t3.Text = "Processing..." end
                                                             end)
-                                                            task.delay(2.5, function()
+                                                            task.delay(3.9, function()
                                                                 if tradeCancelled then return end
                                                                 _lastFakeTradeTime = tick()
                                                                 pcall(function()
