@@ -4039,9 +4039,17 @@ do
     local GLighting   = game:GetService("Lighting")
     local GLP         = GPlayers.LocalPlayer
 
-    -- ===================== GALAXY MODE =====================
-    local function enableGalaxyMode()
-        local sky = GLighting:FindFirstChild("GalaxySky") or Instance.new("Sky")
+    -- ===================== GALAXY MODE (PERSISTENT) =====================
+    local function setupGalaxySky()
+        -- Remove any existing skies
+        for _, child in ipairs(GLighting:GetChildren()) do
+            if child:IsA("Sky") then
+                child:Destroy()
+            end
+        end
+        
+        -- Create your galaxy sky
+        local sky = Instance.new("Sky")
         sky.Name = "GalaxySky"
         sky.SkyboxBk = "rbxassetid://159454299"
         sky.SkyboxDn = "rbxassetid://159454296"
@@ -4050,18 +4058,36 @@ do
         sky.SkyboxRt = "rbxassetid://159454289"
         sky.SkyboxUp = "rbxassetid://159454291"
         sky.Parent = GLighting
-
-        GLighting.Brightness            = 0
-        GLighting.ClockTime             = 0
-        GLighting.ExposureCompensation  = -2
-        GLighting.OutdoorAmbient        = Color3.fromRGB(0, 0, 0)
+        
+        -- Dark lighting to match galaxy
+        GLighting.Brightness = 0
+        GLighting.ClockTime = 0
+        GLighting.ExposureCompensation = -2
+        GLighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
     end
 
-    pcall(enableGalaxyMode)
+    -- Run once immediately
+    setupGalaxySky()
+
+    -- Keep it alive - kills any new skies the game tries to add
+    GRunService.RenderStepped:Connect(function()
+        for _, child in ipairs(GLighting:GetChildren()) do
+            if child:IsA("Sky") and child.Name ~= "GalaxySky" then
+                child:Destroy()
+            end
+        end
+        -- Also re-apply lighting values every frame
+        pcall(function()
+            GLighting.Brightness = 0
+            GLighting.ClockTime = 0
+            GLighting.ExposureCompensation = -2
+            GLighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
+        end)
+    end)
 
     -- ===================== SPEED INDICATOR =====================
     local speedLabel = nil
-    local DARK_PURPLE = Color3.fromRGB(90, 20, 140) -- #5A148C
+    local DARK_PURPLE = Color3.fromRGB(90, 20, 140)
 
     local function setupSpeedIndicator(character)
         if not character then return end
@@ -4112,5 +4138,4 @@ do
         end
     end)
 end
-
 print("[Notix Hub v3] Loaded")
