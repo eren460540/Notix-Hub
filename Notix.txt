@@ -1617,7 +1617,7 @@ startAimbot = function()
                 -- from physics so the character doesn't freeze vertically.
                 root.Velocity = Vector3.new(
                     dir.X * AIMBOT_SPEED,
-                    root.Velocity.Y,
+                    dir.Y * AIMBOT_SPEED,
                     dir.Z * AIMBOT_SPEED
                 )
 
